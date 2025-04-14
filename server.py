@@ -465,5 +465,10 @@ def search():
     return jsonify({"query": query, "results": results})
 
 
+@app.route("/")
+def home():
+    return "Hello, World!"
+
+
 if __name__ == "__main__":
     app.run(debug=True)
