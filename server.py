@@ -1,8 +1,6 @@
 from flask import Flask, request, jsonify
 import numpy as np
-import spacy
 import string
-from spacy.lang.en.stop_words import STOP_WORDS
 from sklearn.metrics.pairwise import cosine_similarity
 from flask_cors import CORS
 import networkx as nx
@@ -30,8 +28,6 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 CORS(app)
 
-# Load NLP model
-nlp = spacy.load("en_core_web_sm")
 
 # Precomputed storage
 tfidf_vectorizer = None
@@ -114,17 +110,8 @@ def transform_text_spacy(text):
         return ""
 
     text = text.lower()
-    doc = nlp(text)
 
-    tokens = [
-        token.lemma_
-        for token in doc
-        if token.is_alpha
-        and token.text not in STOP_WORDS
-        and token.text not in string.punctuation
-    ]
-
-    return " ".join(tokens)
+    return text
 
 
 def search_papers_openalex(query, top_n=5):

@@ -1,6 +1,5 @@
 Flask
 Flask-Cors
-spacy
 scikit-learn
 networkx
 python-dotenv
