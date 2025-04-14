@@ -1,7 +1,1 @@
 Flask
-Flask-Cors
-scikit-learn
-networkx
-python-dotenv
-requests
-pymongo
